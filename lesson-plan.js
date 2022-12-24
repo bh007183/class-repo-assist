@@ -11,7 +11,7 @@ var DailyLessonObjGenerator = function (src, dest) {
       fs.mkdirSync(dest);
       fs.readdirSync(src)
       .forEach(function (childItemName) {
-          copyRecursiveSync(
+        DailyLessonObjGenerator (
             path.join(src, childItemName),
             path.join(dest, childItemName)
           );
@@ -20,6 +20,7 @@ var DailyLessonObjGenerator = function (src, dest) {
       if(src.includes("LESSON")){
         // Gets week folder name
         let grandparent = src.split("/")[8]
+        console.log(grandparent)
         // Gets day folder name
         let parent = src.split("/")[9]
         // reads file

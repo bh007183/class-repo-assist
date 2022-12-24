@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const weeksArray = require("./weeks")
 const initialpath =
   "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-online/01-Class-Content";
 
@@ -19,7 +20,7 @@ function copyRecursiveSync(src, dest) {
           name !== "solved"
       )
       .forEach(function (childItemName) {
-        // if(src.split("/")[8].includes(getLatestWeek('/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC')))
+        
         copyRecursiveSync(
           path.join(src, childItemName),
           path.join(dest, childItemName)
@@ -30,9 +31,8 @@ function copyRecursiveSync(src, dest) {
   }
 }
 copyRecursiveSync(
-  "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-ground/01-Class-Content",
-  "./otter"
-);
+  "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-ground/01-Class-Content/" + getLatestWeek('/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC'),
+  '/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC/' + getLatestWeek('/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC'));
 
 function getLatestWeek(studentRepo) {
   var exists = fs.existsSync(studentRepo);
@@ -43,7 +43,11 @@ function getLatestWeek(studentRepo) {
     let folders = fs
       .readdirSync(studentRepo)
       .filter((childItemName) => childItemName.match(/\d/));
-    let lastWeekInStudentRepo = folders[folders.length - 1].split("-")[0];
-    return lastWeekInStudentRepo;
+    // let lastWeekInStudentRepo = folders[folders.length - 1]
+    // returns vallue for week that needs to be pushed up
+    return weeksArray[folders.length]
   }
+
 }
+
+console.log(getLatestWeek('/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC'))
