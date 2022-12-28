@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const weeksArray = require("./weeks");
 const dailyBreakDown = require("./lesson-plan");
+const { exec } = require("child_process");
 let lessonPlans = dailyBreakDown();
  console.log(process.argv[2])
 function copyRecursiveSync(src, dest) {
@@ -68,16 +69,16 @@ function copyRecursiveSync(src, dest) {
     fs.copyFileSync(src, dest);
   }
 }
-copyRecursiveSync(
-  "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-ground/01-Class-Content/" +
-    getLatestWeek(
-      "/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC"
-    ) + "/01-Activities",
-  "/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC/" +
-    getLatestWeek(
-      "/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC"
-    ) + "/01-Activities"
-);
+// copyRecursiveSync(
+//   "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-ground/01-Class-Content/" +
+//     getLatestWeek(
+//       "/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC"
+//     ) + "/01-Activities",
+//   "/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC/" +
+//     getLatestWeek(
+//       "/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC"
+//     ) + "/01-Activities"
+// );
 
 function getLatestWeek(studentRepo) {
   var exists = fs.existsSync(studentRepo);
@@ -91,3 +92,32 @@ function getLatestWeek(studentRepo) {
     return weeksArray[folders.length -1];
   }
 }
+
+// async function command(message){
+//     try{
+//         await exec("cd ~/UWBootCamp/studentrepo/");
+//         await exec("git add .");
+//         await exec("git commit -m "+ `${message}`);
+//         await exec("git push");
+//     }catch(err){
+//         console.log(err)
+//     }
+// }
+async function command(message){
+    try{
+        await exec("cd ~/Javascript/classassist");
+        console.log("triggard")
+        await exec("git add .");
+        console.log("triggard2")
+        await exec("git commit -m 'test'");
+        console.log("triggard3")
+        await exec("git push");
+        console.log("triggard4")
+    }catch(err){
+        console.log("triggarderr")
+        console.log(err)
+    }
+}
+
+command("added command function to push code change to gitlab")
+
