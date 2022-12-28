@@ -3,22 +3,15 @@ const path = require("path");
 const weeksArray = require("./weeks");
 const dailyBreakDown = require("./lesson-plan");
 let lessonPlans = dailyBreakDown();
-
+ console.log(process.argv[2])
 function copyRecursiveSync(src, dest) {
   var exists = fs.existsSync(src);
   var stats = exists && fs.statSync(src);
   var isDirectory = exists && stats.isDirectory();
   if (isDirectory) {
+ 
     fs.mkdirSync(dest, { recursive: true });
-
     fs.readdirSync(src)
-      .filter(
-        (name) =>
-          name !== "Solved" &&
-          name !== "Main" &&
-          name !== "main" &&
-          name !== "solved"
-      )
       .forEach(function (childItemName) {
         if (
           src.split("/")[src.split("/").length - 1].includes("01-Activities")
@@ -32,7 +25,7 @@ function copyRecursiveSync(src, dest) {
             currentLessonPlans[0].parent.slice(0, 2) === "01" &&
             currentLessonPlans[0].lessons.includes(
               Number(childItemName.slice(0, 2))
-            )
+            ) && process.argv[2] === "1"
           ) {
             copyRecursiveSync(
               path.join(src, childItemName),
@@ -44,7 +37,7 @@ function copyRecursiveSync(src, dest) {
             currentLessonPlans[1].parent.slice(0, 2) === "02" &&
             currentLessonPlans[1].lessons.includes(
               Number(childItemName.slice(0, 2))
-            )
+            ) && process.argv[2] === "2"
           ) {
             copyRecursiveSync(
               path.join(src, childItemName),
@@ -56,7 +49,7 @@ function copyRecursiveSync(src, dest) {
             currentLessonPlans[2].parent.slice(0, 2) === "03" &&
             currentLessonPlans[2].lessons.includes(
               Number(childItemName.slice(0, 2))
-            )
+            ) && process.argv[2] === "3"
           ) {
             copyRecursiveSync(
               path.join(src, childItemName),
@@ -79,11 +72,11 @@ copyRecursiveSync(
   "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-ground/01-Class-Content/" +
     getLatestWeek(
       "/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC"
-    ),
+    ) + "/01-Activities",
   "/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC/" +
     getLatestWeek(
       "/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC"
-    )
+    ) + "/01-Activities"
 );
 
 function getLatestWeek(studentRepo) {
@@ -95,6 +88,6 @@ function getLatestWeek(studentRepo) {
     let folders = fs
       .readdirSync(studentRepo)
       .filter((childItemName) => childItemName.match(/\d/));
-    return weeksArray[folders.length];
+    return weeksArray[folders.length -1];
   }
 }
