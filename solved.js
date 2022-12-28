@@ -119,5 +119,5 @@ async function command(){
     }
 }
 
-command("added command function to push code change to gitlab")
+command()
 
