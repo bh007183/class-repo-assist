@@ -103,16 +103,16 @@ function getLatestWeek(studentRepo) {
 //         console.log(err)
 //     }
 // }
-async function command(message){
+async function command(){
     try{
         await exec("cd ~/Javascript/classassist");
-        console.log("triggard")
+       
         await exec("git add .");
-        console.log("triggard2")
-        await exec("git commit -m 'test'");
-        console.log("triggard3")
+       
+        await exec("git commit -m 'pushed solved folders'");
+       
         await exec("git push");
-        console.log("triggard4")
+       
     }catch(err){
         console.log("triggarderr")
         console.log(err)
