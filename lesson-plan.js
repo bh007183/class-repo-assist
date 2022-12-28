@@ -2,13 +2,22 @@
 const fs = require("fs");
 const path = require("path");
 let arr = []
+function arrayCapture(){
+  
+  DailyLessonObjGenerator(
+    "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-ground/02-Lesson-Plans/Part-Time",
+    "./otter"
+  );
+  return arr
+  
+}
 var DailyLessonObjGenerator = function (src, dest) {
   
     var exists = fs.existsSync(src);
     var stats = exists && fs.statSync(src);
     var isDirectory = exists && stats.isDirectory();
     if (isDirectory) {
-      fs.mkdirSync(dest);
+      
       fs.readdirSync(src)
       .forEach(function (childItemName) {
         DailyLessonObjGenerator (
@@ -20,7 +29,8 @@ var DailyLessonObjGenerator = function (src, dest) {
       if(src.includes("LESSON")){
         // Gets week folder name
         let grandparent = src.split("/")[8]
-        console.log(grandparent)
+        
+       
         // Gets day folder name
         let parent = src.split("/")[9]
         // reads file
@@ -53,9 +63,11 @@ var DailyLessonObjGenerator = function (src, dest) {
        
             //object containing all leson numbers, day, and week data
           let obj = {
-            grandparent,
-            parent,
-            lessons: lessons
+            grandparent: grandparent.slice(0,2),
+          
+              parent,
+              lessons
+            
           }
           arr.push(obj)
 
@@ -66,9 +78,8 @@ var DailyLessonObjGenerator = function (src, dest) {
     
 
   };
-  DailyLessonObjGenerator(
-    "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-ground/02-Lesson-Plans/Part-Time",
-    "./otter"
-  );
-  console.log(arr)
+
+  module.exports =arrayCapture
+
+ 
   
