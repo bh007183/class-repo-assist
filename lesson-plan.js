@@ -5,7 +5,7 @@ let arr = []
 function arrayCapture(){
   
   DailyLessonObjGenerator(
-    "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-ground/02-Lesson-Plans/Part-Time",
+    "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-live/02-Lesson-Plans/Part-Time",
     "./otter"
   );
   return arr

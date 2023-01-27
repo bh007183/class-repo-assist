@@ -70,7 +70,7 @@ function copyRecursiveSync(src, dest) {
   }
 }
 copyRecursiveSync(
-  "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-ground/01-Class-Content/" +
+  "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-live/01-Class-Content/" +
     getLatestWeek(
       "/Users/benhopkins/UWBootCamp/studentrepo/UW-VIRT-FSF-PT-12-2022-U-LOLC"
     ) + "/01-Activities",
