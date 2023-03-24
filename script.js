@@ -99,3 +99,4 @@ function getLatestWeek(studentRepo) {
     return weeksArray[folders.length];
   }
 }
+//
