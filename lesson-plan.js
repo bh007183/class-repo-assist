@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 let arr = []
 function arrayCapture(){
-  
+  // ./otter is a place holder with no real functionality...dont remember why i have that haha. instructorrepo path is the readme in the lesson plan part time. This is used to find how many and what lessons belong in each day by reading the lesson plan read me.
   DailyLessonObjGenerator(
     "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-live/02-Lesson-Plans/Part-Time",
     "./otter"

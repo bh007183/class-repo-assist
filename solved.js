@@ -69,6 +69,7 @@ function copyRecursiveSync(src, dest) {
     fs.copyFileSync(src, dest);
   }
 }
+//Replace file paths below with the appropriate files. The file path below that lists instructorrepo is the source repository that you are reading from. the ones that say studentrepo is the target repo you are writting the content to.
 copyRecursiveSync(
   "/Users/benhopkins/UWBootCamp/instructorrepo/fullstack-live/01-Class-Content/" +
     getLatestWeek(

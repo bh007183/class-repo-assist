@@ -4,6 +4,8 @@
 
 * That should read: * In this lesson, students will complete activities `21-Ins_Sign-JWT` through `28-Stu_Mini-Project`.
 
+* replace appropriate file paths in script.js, solved.js, lesson-plan.js. read notes on line 72 ins solved.js and 78 in script.js and 6 in lesson-plan.js
+
 * my work arround right now is just to modify that typo manually.
 
 * To add content for new week run "node script.js"
